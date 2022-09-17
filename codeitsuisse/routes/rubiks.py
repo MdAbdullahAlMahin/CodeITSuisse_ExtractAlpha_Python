@@ -14,7 +14,7 @@ def rubiks():
     inputValue = data.get("input")
     ops = data["ops"]
     state = data["state"]
-    ops = ops
+    logging.info(ops)
     for i in range(0,len(ops)):
         if ops[i] == "U":
             if i < len(ops) - 1 and ops[i+1]=="i":
@@ -48,6 +48,7 @@ def rubiks():
                 state = Ri(state)
             else:
                 state = R(state)
+    logging.info(state)
     return json.dumps(state)
 
 def R(state):
@@ -64,7 +65,7 @@ def Ri(state):
 
 def Li(state):
     for i in range(0,3):
-        state["f"][i][0],state["u"][i][0],state["b"][i][0],state["d"][i][0] = state["b"][i][0],state["f"][i][0],state["u"][i][0],state["b"][i][0]
+        state["f"][i][0],state["u"][i][0],state["b"][i][0],state["d"][i][0] = state["d"][i][0],state["f"][i][0],state["u"][i][0],state["b"][i][0]
     state["l"] = Rotate_Clockwise(state["l"])
     return state
 
@@ -96,25 +97,25 @@ def D(state):
 
 def F(state):
     for i in range(0,3):
-        state["u"][2][i],state["r"][i][0],state["b"][0][i],state["l"][i][2] = state["l"][i][2],state["u"][2][i],state["r"][i][0],state["b"][0][i]
+        state["u"][2][i],state["r"][i][0],state["d"][0][i],state["l"][i][2] = state["l"][i][2],state["u"][2][i],state["r"][i][0],state["d"][0][i]
     state["f"] = Rotate_Clockwise(state["f"])
     return state
 
 def Fi(state):
     for i in range(0,3):
-        state["u"][2][i],state["r"][i][0],state["b"][0][i],state["l"][i][2] = state["r"][i][0],state["b"][0][i],state["l"][i][2],state["u"][2][i],
+        state["u"][2][i],state["r"][i][0],state["d"][0][i],state["l"][i][2] = state["r"][i][0],state["d"][0][i],state["l"][i][2],state["u"][2][i],
     state["f"] = Rotate_Anti_Clockwise(state["f"])
     return state
 
 def Bi(state):
     for i in range(0,3):
-        state["u"][0][i],state["r"][i][2],state["b"][2][i],state["l"][i][0] = state["l"][i][0],state["u"][0][i],state["r"][i][2],state["b"][2][i]
+        state["u"][0][i],state["r"][i][2],state["d"][2][i],state["l"][i][0] = state["l"][i][0],state["u"][0][i],state["r"][i][2],state["d"][2][i]
     state["b"] = Rotate_Anti_Clockwise(state["b"])
     return state
 
 def B(state):
     for i in range(0,3):
-        state["u"][0][i],state["r"][i][2],state["b"][2][i],state["l"][i][0] = state["r"][i][2],state["b"][2][i],state["l"][i][0],state["u"][0][i],
+        state["u"][0][i],state["r"][i][2],state["d"][2][i],state["l"][i][0] = state["r"][i][2],state["d"][2][i],state["l"][i][0],state["u"][0][i],
     state["b"] = Rotate_Clockwise(state["b"])
     return state
 
