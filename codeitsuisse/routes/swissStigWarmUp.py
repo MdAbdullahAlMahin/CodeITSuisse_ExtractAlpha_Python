@@ -11,8 +11,8 @@ def stigWarmUp():
 
     output = []
 
-    for i in data:
-        margin = i['questions']['upper'] - i['questions']['lower']
-        output.append((dict(p=margin, q=i['questions']['maxRating'])))
+    for i in data.get('Interviews'):
+        for j in i['questions']:
+            output.append(dict(p=j['upper']-j['lower'],q=i['maxRating']))
     
-    return json.dumps(output)
+    return jsonify(output)
