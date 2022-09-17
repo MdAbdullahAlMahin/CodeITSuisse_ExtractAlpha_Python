@@ -6,7 +6,11 @@ import codeitsuisse.routes.tickerStreamPart2
 import codeitsuisse.routes.cryptocollapz
 import codeitsuisse.routes.calendarDay
 import codeitsuisse.routes.rubiks
-import codeitsuisse.routes.quordle
+import codeitsuisse.routes.travelling_suisse_robot
+import codeitsuisse.routes.stig
+import codeitsuisse.routes.quordleKeyboard
+import codeitsuisse.routes.dnscache
+
 
 
 
