@@ -12,7 +12,7 @@ def tickerStreamPart2():
     data = request.get_json()
     logging.info("data sent for evaluation {}".format(data))
     stream = data.get("stream")
-    quantity_block = data.get("quantity")
+    quantity_block = data.get("quantityBlock")
     stream.sort()
     prev_timestamp = ""
     cum = {}
@@ -45,7 +45,7 @@ def tickerStreamPart2():
     if len(res) > 1:
         ans.append(",".join(res))
     result = {
-      "output": ans
+        "output": ans
     }
     logging.info("My result :{}".format(result))
     return json.dumps(result)
