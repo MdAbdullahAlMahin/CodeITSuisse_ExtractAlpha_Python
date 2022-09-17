@@ -14,12 +14,10 @@ def rubiks():
     inputValue = data.get("input")
     ops = data["ops"]
     state = data["state"]
-    logging.info(ops)
     for i in range(0,len(ops)):
         if ops[i] == "U":
             if i < len(ops) - 1 and ops[i+1]=="i":
                 state = Ui(state)
-                logging.info(state)
             else:
                 state = U(state)
         elif ops[i] == "F":
@@ -32,7 +30,6 @@ def rubiks():
                 state = Di(state)
             else:
                 state = D(state)
-                logging.info(state)
         elif ops[i] == "B":
             if i < len(ops) - 1 and ops[i+1]=="i":
                 state = Bi(state)
@@ -48,7 +45,6 @@ def rubiks():
                 state = Ri(state)
             else:
                 state = R(state)
-    logging.info(state)
     return json.dumps(state)
 
 def R(state):
@@ -66,7 +62,7 @@ def Ri(state):
 def Li(state):
     for i in range(0,3):
         state["f"][i][0],state["u"][i][0],state["b"][i][0],state["d"][i][0] = state["d"][i][0],state["f"][i][0],state["u"][i][0],state["b"][i][0]
-    state["l"] = Rotate_Clockwise(state["l"])
+    state["l"] = Rotate_Anti_Clockwise(state["l"])
     return state
 
 def L(state):
