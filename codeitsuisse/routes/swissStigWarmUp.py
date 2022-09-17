@@ -2,7 +2,6 @@ from codeitsuisse import app
 import logging
 from flask import request, jsonify
 import json
-from codeitsuisse import app
 
 logger = logging.getLogger(__name__)
 @app.route('/stig/warmup', methods=['POST'])
