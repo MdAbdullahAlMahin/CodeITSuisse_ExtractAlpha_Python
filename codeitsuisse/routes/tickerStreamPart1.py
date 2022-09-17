@@ -27,17 +27,17 @@ def tickerStreamPart1():
             res = [timestamp]
         if ticker in cum:
             cum[ticker] = [
-                cum[ticker][0] + quantity, cum[ticker][1] + quantity * price
+                cum[ticker][0] + quantity,round(cum[ticker][1] + quantity * price,1)
             ]
         else:
             cum[ticker] = [quantity, quantity * price]
         if prev_timestamp == timestamp and res[-3] == ticker:
             res[-2] = str(cum[ticker][0])
-            res[-1] = str(cum[ticker][1])
+            res[-1] = str(round(cum[ticker][1],1))
         else:
             res.append(ticker)
             res.append(str(cum[ticker][0]))
-            res.append(str(cum[ticker][1]))
+            res.append(str(round(cum[ticker][1],1)))
         prev_timestamp = timestamp
     ans.append(",".join(res))
     result = {

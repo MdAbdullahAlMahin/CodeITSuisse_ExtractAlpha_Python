@@ -31,7 +31,7 @@ def tickerStreamPart2():
             if quantity >= left:
                 res.append(ticker)
                 res.append(str(cum[ticker][0] + left))
-                res.append(str(cum[ticker][1] + left * price))
+                res.append(str(round(cum[ticker][1] + left * price,1)))
             cum[ticker] = [
                 cum[ticker][0] + quantity, cum[ticker][1] + quantity * price
             ]
@@ -39,7 +39,7 @@ def tickerStreamPart2():
             if quantity >= quantity_block:
                 res.append(ticker)
                 res.append(str(quantity_block))
-                res.append(str(quantity_block * price))
+                res.append(str(round(quantity_block * price,1)))
             cum[ticker] = [quantity, quantity * price]
         prev_timestamp = timestamp
     if len(res) > 1:
