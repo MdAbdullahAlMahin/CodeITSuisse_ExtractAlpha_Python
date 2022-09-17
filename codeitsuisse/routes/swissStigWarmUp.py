@@ -2,7 +2,6 @@ from codeitsuisse import app
 import logging
 from flask import request, jsonify
 import json
-from codeitsuisse import app
 
 logger = logging.getLogger(__name__)
 @app.route('/stig/warmup', methods=['POST'])
@@ -11,8 +10,8 @@ def stigWarmUp():
 
     output = []
 
-    for i in data:
-        margin = i['questions']['upper'] - i['questions']['lower']
-        output.append((dict(p=margin, q=i['questions']['maxRating'])))
+    for i in data.get('Interviews'):
+        for j in i['questions']:
+            output.append(dict(p=j['upper']-j['lower'],q=i['maxRating']))
     
-    return json.dumps(output)
+    return jsonify(output)
