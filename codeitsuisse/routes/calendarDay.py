@@ -30,7 +30,6 @@ def checkdate(day, year):
         start += 1
     return day - 1
 
-
 def answer(numbers):
     start = datetime.date(numbers[0], 1, 1).weekday()
 
@@ -58,19 +57,17 @@ def answer(numbers):
         count1, count2 = 0,0
         for j in range(len(log[i])):
             count2 = max(count2, log[i][j].count('s'))
-            idx = 0
             for k in range(7):
                 check = log[i][j][k]
                 if check.isalpha():
                     ans = ans[:k] + log[i][j][k] + ans[k+1:]
                     if k < 5:
                         count1 += 1
-                    idx = j
 
-        if count2 + count1 == 7:
+        if count2 + count1 >= 7:
             ans = 'alldays'
         elif count1:
-            ans = 'weekday' if count1 ==5 else ans
+            ans = 'weekday' if count1 >=5 else ans
         elif count2:
             ans = 'weekend' if count2 ==2 else ans
 
