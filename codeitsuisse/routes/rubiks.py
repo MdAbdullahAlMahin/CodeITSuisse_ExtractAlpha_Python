@@ -55,8 +55,7 @@ def R(state):
 
 def Ri(state):
     for i in range(0,3):
-        state["f"][i][2],state["u"][i][2],state["b"][2-i][0],state["d"][i][2] = state["u"][i][2],state["b"][2-i][0],state["d"][i][2],state["f"][i][2]
-    state["r"] = Rotate_Anti_Clockwise(state["r"])
+        state = R(state)
     return state
 
 def L(state):
@@ -67,8 +66,7 @@ def L(state):
 
 def Li(state):
     for i in range(0,3):
-        state["f"][i][0],state["u"][i][0],state["b"][2-i][2],state["d"][i][0] = state["d"][i][0],state["f"][i][0],state["u"][i][0],state["b"][2-i][2]
-    state["l"] = Rotate_Anti_Clockwise(state["l"])
+        state = L(state)
     return state
 
 def U(state):
@@ -77,13 +75,13 @@ def U(state):
     return state
 
 def Ui(state):
-    state["f"][0],state["l"][0],state["b"][0],state["r"][0] = state["l"][0], state["b"][0], state["r"][0], state["f"][0]
-    state["u"] = Rotate_Anti_Clockwise(state["u"])
+    for i in range(0,3):
+        state = U(state)
     return state
 
 def Di(state):
-    state["f"][2],state["l"][2],state["b"][2],state["r"][2] = state["r"][2], state["f"][2], state["l"][2], state["b"][2]
-    state["d"] = Rotate_Anti_Clockwise(state["d"])
+    for i in range(0,3):
+        state = D(state)
     return state
 
 def D(state):
@@ -99,14 +97,12 @@ def F(state):
 
 def Fi(state):
     for i in range(0,3):
-        state["u"][2][i],state["r"][i][0],state["d"][0][2-i],state["l"][i][2] = state["r"][i][0],state["d"][0][2-i],state["l"][i][2],state["u"][2][i],
-    state["f"] = Rotate_Anti_Clockwise(state["f"])
+        state = F(state)
     return state
 
 def Bi(state):
     for i in range(0,3):
-        state["u"][0][i],state["r"][i][2],state["d"][2][2-i],state["l"][i][0] = state["l"][i][0],state["u"][0][i],state["r"][i][2],state["d"][2][2-i]
-    state["b"] = Rotate_Anti_Clockwise(state["b"])
+        state = B(state)
     return state
 
 def B(state):
@@ -119,6 +115,6 @@ def Rotate_Clockwise(m):
     m[0][0],m[0][1],m[0][2],m[1][0],m[1][2],m[2][0],m[2][1],m[2][2] = m[2][0],m[1][0],m[0][0],m[2][1],m[0][1],m[2][2],m[1][2],m[0][2]
     return m
 
-def Rotate_Anti_Clockwise(m):
-    m[0][0],m[0][1],m[0][2],m[1][0],m[1][2],m[2][0],m[2][1],m[2][2] = m[0][2],m[1][2],m[2][2],m[0][1],m[2][1],m[0][0],m[1][0],m[2][0]
-    return m
+# def Rotate_Anti_Clockwise(m):
+#     m[0][0],m[0][1],m[0][2],m[1][0],m[1][2],m[2][0],m[2][1],m[2][2] = m[0][2],m[1][2],m[2][2],m[0][1],m[2][1],m[0][0],m[1][0],m[2][0]
+#     return m
