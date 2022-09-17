@@ -79,7 +79,7 @@ def answer(numbers):
     return output
 
 logger = logging.getLogger(__name__)
-@app.route('/calendarDay', methods=['POST'])
+@app.route('/calendarDays', methods=['POST'])
 def calendarDay():
     data = request.get_json()
 
