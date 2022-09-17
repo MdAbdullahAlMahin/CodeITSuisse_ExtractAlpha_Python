@@ -18,33 +18,45 @@ def rubiks():
         if ops[i] == "U":
             if i < len(ops) - 1 and ops[i+1]=="i":
                 state = Ui(state)
+                logging.info("Ui")
             else:
                 state = U(state)
+                logging.info("U")
         elif ops[i] == "F":
             if i < len(ops) - 1 and ops[i+1]=="i":
                 state = Fi(state)
+                logging.info("Fi")
             else:
                 state = F(state)
+                logging.info("F")
         elif ops[i] == "D":
             if i < len(ops) - 1 and ops[i+1]=="i":
                 state = Di(state)
+                logging.info("Di")
             else:
                 state = D(state)
+                logging.info("D")
         elif ops[i] == "B":
             if i < len(ops) - 1 and ops[i+1]=="i":
                 state = Bi(state)
+                logging.info("Bi")
             else:
                 state = B(state)
+                logging.info("B")
         elif ops[i] == "L":
             if i < len(ops) - 1 and ops[i+1]=="i":
                 state = Li(state)
+                logging.info("Li")
             else:
                 state = L(state)
+                logging.info("L")
         elif ops[i] == "R":
             if i < len(ops) - 1 and ops[i+1]=="i":
                 state = Ri(state)
+                logging.info("Ri")
             else:
                 state = R(state)
+                logging.info("R")
     return json.dumps(state)
 
 def R(state):
