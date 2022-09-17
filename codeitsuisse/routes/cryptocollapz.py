@@ -39,4 +39,5 @@ def cryptocollapz():
           ans[k] = max
         partialResult.append(int(max))
       result.append(partialResult)
-    return json.dumps(result)
+    # return json.dumps(result)
+    return jsonify(result)
