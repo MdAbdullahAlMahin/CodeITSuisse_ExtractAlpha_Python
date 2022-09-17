@@ -23,11 +23,16 @@ def cryptocollapz():
       partialResult = []
       for j in i:
         temp = []
+        smallerThan = []
         max = 0
         while j not in ans:
-          temp.append(j)
+          logging.info(j)
+          logging.info(j not in ans)
+          smallerThan.append(j)
           if j > max:
             max = j
+            temp += smallerThan
+            smallerThan = []
           if (j%2)==0:
             j /= 2
           else:
@@ -35,9 +40,11 @@ def cryptocollapz():
             j += 1
         if ans[j] > max:
           max = ans[j]
+          temp+=smallerThan
+        logging.info(temp)
+        logging.info(ans)
         for k in temp:
           ans[k] = max
         partialResult.append(int(max))
       result.append(partialResult)
-    # return json.dumps(result)
     return jsonify(result)
