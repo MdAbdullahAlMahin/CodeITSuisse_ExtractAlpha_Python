@@ -80,6 +80,9 @@ def answer2(result):
 
     year = 2001 + result[0].find(' ')
 
+    if year <2001:
+        return result
+
     ans = [year]
     days = 0
     start = datetime.date(year, 1, 1).weekday()
