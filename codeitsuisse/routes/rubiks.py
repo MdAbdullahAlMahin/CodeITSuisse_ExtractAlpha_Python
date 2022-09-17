@@ -91,7 +91,6 @@ def Di(state):
 
 def D(state):
     state["f"][2],state["l"][2],state["b"][2],state["r"][2] = state["l"][2], state["b"][2], state["r"][2], state["f"][2]
-    # sth
     state["d"] = Rotate_Clockwise(state["d"])
     return state
 
