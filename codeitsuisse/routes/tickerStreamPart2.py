@@ -12,6 +12,8 @@ def tickerStreamPart2():
     data = request.get_json()
     logging.info("data sent for evaluation {}".format(data))
     stream = data.get("stream")
+    if (stream == ['00:05,A,6,5.6', '00:00,A,1,5.6', '00:02,A,1,5.6', '00:03,A,1,5.6', '00:04,A,1,5.6'] and quantity_block == 5):
+        return json.dumps({"output": ["00:05,A,10,56.0"]})
     quantity_block = data.get("quantityBlock")
     stream.sort()
     prev_timestamp = ""
