@@ -75,10 +75,60 @@ def answer(numbers):
 
     return output
 
+def answer2(result):
+    result = result.split(',')
+
+    year = 2001 + result[0].find(' ')
+
+    ans = [year]
+    days = 0
+    start = datetime.date(year, 1, 1).weekday()
+
+    for i in range(12):
+
+        if result[i]=='alldays':
+            for j in range(7):
+                ans.append(days+j+1)
+        
+        elif result[i]=='weekend':
+            temp = datetime.date(year, i+1, 1).weekday()
+            
+            day = 1
+            
+            while temp!= 5:
+                day += 1
+                temp = (temp+1)%7
+            ans += [days+day, days+day+1]
+        
+        elif result[i]=='weekday':
+            temp = datetime.date(year,i+1,1).weekday()
+            day = 1
+            while temp!= 0:
+                day += 1
+                temp = (temp+1)%7
+            
+            for j in range(5):
+                ans.append(days+day+j)
+        
+        else:
+        
+            for j in range(1,8):
+                
+                temp = (days + j + start)%7
+                
+                if result[i][temp].isalpha():
+                    ans.append(days + j + 1)
+                    
+        days += calendar.monthrange(year,i+1)[1]
+    return ans
+
 logger = logging.getLogger(__name__)
 @app.route('/calendarDays', methods=['POST'])
 def calendarDay():
     data = request.get_json()
 
-    response = dict(part1=answer(data.get('numbers')), part2=[])
+    part1 = answer(data.get('numbers'))
+    part2 = answer2(part1)
+    
+    response = dict(part1=part1, part2=part2)
     return json.dumps(response)
