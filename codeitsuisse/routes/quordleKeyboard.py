@@ -11,7 +11,6 @@ logger = logging.getLogger(__name__)
 def quordleKeyboard():
     l = ["" for _ in range(26)]
 
-
     data = request.get_json()
     answers = data.get('answers')
     attempts = data.get('attempts')
