@@ -1,7 +1,7 @@
 from codeitsuisse import app
 import logging
 from flask import request, jsonify
-
+import json
 from codeitsuisse import app
 
 logger = logging.getLogger(__name__)
@@ -15,4 +15,4 @@ def stigWarmUp():
         margin = i['questions']['upper'] - i['questions']['lower']
         output.append((dict(p=margin, q=i['questions']['maxRating'])))
     
-    return jsonify(output)
+    return json.dumps(output)
