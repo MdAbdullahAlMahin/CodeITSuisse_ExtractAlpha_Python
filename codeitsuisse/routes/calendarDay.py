@@ -59,7 +59,7 @@ def answer(numbers):
             count2 = max(count2, log[i][j].count('s'))
             for k in range(7):
                 check = log[i][j][k]
-                if check.isalpha() and not ans[k].isalpha():
+                if check.isalpha() and ans[k]==' ':
                     ans = ans[:k] + log[i][j][k] + ans[k+1:]
                     if k < 5:
                         count1 += 1
@@ -80,9 +80,8 @@ def answer2(result):
 
     year = 2001 + result[0].find(' ')
 
-    if year <2001:
+    if year < 2001:
         return result
-
     ans = [year]
     days = 0
     start = datetime.date(year, 1, 1).weekday()
