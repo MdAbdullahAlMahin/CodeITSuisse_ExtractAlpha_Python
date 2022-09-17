@@ -26,8 +26,6 @@ def cryptocollapz():
         smallerThan = []
         max = 0
         while j not in ans:
-          logging.info(j)
-          logging.info(j not in ans)
           smallerThan.append(j)
           if j > max:
             max = j
@@ -41,8 +39,6 @@ def cryptocollapz():
         if ans[j] > max:
           max = ans[j]
           temp+=smallerThan
-        logging.info(temp)
-        logging.info(ans)
         for k in temp:
           ans[k] = max
         partialResult.append(int(max))
