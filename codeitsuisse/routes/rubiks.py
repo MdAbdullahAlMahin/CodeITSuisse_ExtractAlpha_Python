@@ -111,7 +111,7 @@ def Bi(state):
 
 def B(state):
     for i in range(0,3):
-        state["u"][0][i],state["r"][i][2],state["d"][2][i],state["l"][i][0] = state["r"][i][2],state["d"][2][i],state["l"][i][0],state["u"][0][i],
+        state["u"][0][i],state["r"][i][2],state["d"][2][2-i],state["l"][i][0] = state["r"][i][2],state["d"][2][2-i],state["l"][i][0],state["u"][0][i],
     state["b"] = Rotate_Clockwise(state["b"])
     return state
 
