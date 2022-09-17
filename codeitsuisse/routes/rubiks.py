@@ -109,7 +109,7 @@ def Fi(state):
 def Bi(state):
     for i in range(0,3):
         state["u"][0][i],state["r"][i][2],state["b"][2][i],state["l"][i][0] = state["l"][i][0],state["u"][0][i],state["r"][i][2],state["b"][2][i]
-    state[fb] = Rotate_Anti_Clockwise(state["b"])
+    state["b"] = Rotate_Anti_Clockwise(state["b"])
     return state
 
 def B(state):
