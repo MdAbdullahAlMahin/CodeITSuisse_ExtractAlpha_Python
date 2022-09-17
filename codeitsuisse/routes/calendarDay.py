@@ -59,15 +59,15 @@ def answer(numbers):
             count2 = max(count2, log[i][j].count('s'))
             for k in range(7):
                 check = log[i][j][k]
-                if check.isalpha():
+                if check.isalpha() and not ans[k].isalpha():
                     ans = ans[:k] + log[i][j][k] + ans[k+1:]
                     if k < 5:
                         count1 += 1
 
-        if count2 + count1 >= 7:
+        if count2 + count1 == 7:
             ans = 'alldays'
         elif count1:
-            ans = 'weekday' if count1 >=5 else ans
+            ans = 'weekday' if count1 ==5 else ans
         elif count2:
             ans = 'weekend' if count2 ==2 else ans
 
