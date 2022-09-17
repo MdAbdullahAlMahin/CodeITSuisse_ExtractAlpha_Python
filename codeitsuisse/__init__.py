@@ -9,6 +9,7 @@ import codeitsuisse.routes.rubiks
 import codeitsuisse.routes.travelling_suisse_robot
 import codeitsuisse.routes.quordleKeyboard
 import codeitsuisse.routes.dnscache
+import codeitsuisse.routes.swissStigWarmUp
 
 
 
